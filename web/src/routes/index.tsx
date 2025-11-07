@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import { Sidebar } from "../components/ui/sidebar";
+import { Sidebar } from "../components/sidebar";
 
 export const Route = createFileRoute("/")({
   component: Index,
