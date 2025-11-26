@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { createSelectSchema } from "drizzle-zod";
-import { lt } from "drizzle-orm";
+import { desc, lt } from "drizzle-orm";
 import { z } from "zod";
 
 import { webhooks } from "@/db/schema";
@@ -44,6 +44,7 @@ export const listWebhooks: FastifyPluginAsyncZod = async (app) => {
         })
         .from(webhooks)
         .where(cursor ? lt(webhooks.id, cursor) : undefined)
+        .orderBy(desc(webhooks.id))
         .limit(limit + 1);
 
       const hasMore = result.length > limit;
